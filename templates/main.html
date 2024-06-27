@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/card.css' %}" />
+{% endblock style %}
+{% block content %}
+<main id="main__main">
+  <a href="{% url 'studies:create' %}">
+    <svg class="study-create-button" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+    </svg>
+  </a>
+  
+
+  {# 최신 스터디 #}
+  <section>
+    <div class="studies__title">최신 스터디 👩‍🏫</div>
+  </section>
+  {# 모든 스터디 #}
+  <section>
+    <div class="all-box">
+      <p>새로운 스터디에 도전하고 싶으신가요?</p>
+      <p><a href="{% url 'studies:index' %}" class="a"><b>버튼</b></a>을 클릭하면 더 많은 스터디를 찾아볼 수 있습니다.</p>
+      <a href="{% url 'studies:index' %}">
+        <button class="btn button-small">더 많은 스터디 보러가기 ></button>
+      </a>
+    </div>
+  </section>
+</main>
+{% endblock content %}

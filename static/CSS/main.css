@@ -1,0 +1,206 @@
+/* 배너 */
+.banner__container {
+  width: 100%;
+  height: 250px;
+  background-color: #F6D448;
+  margin-bottom: 20px;
+}
+
+.banner1 {
+  background-color: #D5D131;
+}
+
+.banner2 {
+  background-color: var(--color-blue);
+}
+
+.bannerSwiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerSwiper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #8DB83B;
+  z-index: -1;
+}
+
+.bannerSwiper img {
+  position: relative;
+  z-index: 1;
+}
+
+/* 소개 */
+.intro {
+  width: 100%;
+  display: block;
+}
+
+#main__main {
+  width: 1024px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px) {
+  #main__main {
+    width: 100%;
+    max-width: 1024px;
+  }
+}
+
+.study-create-button {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  color: var(--color-blue);
+  opacity: 0.3;
+  background-color: var(--color-white);
+  box-shadow: rgba(133, 200, 152, 0.35) 0px 5px 5px;
+  z-index: 100;
+}
+
+.study-create-button:hover {
+  transform: scale(1.1);
+  opacity: 0.7;
+}
+
+/* 모든 스터디 임의 스타일 */
+.all {
+  margin-top: 100px;
+}
+
+.all-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px 0;
+  color: var(--color-gray-4);
+  font-size: var(--font-regular);
+}
+
+.a {
+  color: var(--color-gray-6);
+  text-decoration: underline;
+}
+
+.btn {
+  padding: 10px;
+  margin: 30px;
+  font-size: var(--font-regular);
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+
+/* 나의 스터디 */
+.myStudies__container {
+  padding-top: 20px;
+}
+
+.studies__title {
+  font-size: var(--font-large);
+  font-weight: var(--weight-semi-bold);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.newStudies__wrapper {
+  display: flex;
+  flex-flow: wrap;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.newStudies__container {
+  width: 240px;
+  height: 150px;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-soft);
+  box-shadow: 5px 5px 10px lightgray;
+  margin: 1px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  padding: 10px 10px;
+  position: relative;
+
+}
+
+.newStudies-title {
+  margin-bottom: 10px;
+}
+
+.newStudies-joinbutton__container {
+  padding: 6px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.joinbutton {
+  height: 30px;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  text-align: center;
+  line-height: 30px;
+}
+
+.joinbutton:hover {
+  border: 1px solid var(--color-blue);
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  font-weight: var(--weight-semi-bold);
+}
+
+.card__days-container{
+  display: flex;
+  min-height: 30.6px;
+}
+
+/* 알람 */
+.alarm {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  color: black;
+  text-align: center;
+  line-height: 1.5em;
+  font-weight: var(--weight-bold);
+}
+
+.blinking{
+  -webkit-animation: blink 1.5s ease-in-out infinite alternate;
+  -moz-animation: blink 1.5s ease-in-out infinite alternate;
+  animation: blink 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes blink{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@-moz-keyframes blink{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes blink{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

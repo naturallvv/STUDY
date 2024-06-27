@@ -1,0 +1,248 @@
+.box {
+  border: 1px solid black;
+}
+
+.main__wrapper,
+.main__title {
+  width: 1024px;
+  padding: 0 32px;
+  margin: 50px auto 0;
+  display: flex;
+}
+
+.main__wrapper {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 1023px) {
+  .main__wrapper,
+  .main__title {
+    width: 100%;
+    max-width: 1024px;
+  }
+}
+
+/* 유저 이름 */
+.main__title {
+  font-size: var(--font-large);
+  font-weight: var(--weight-bold);
+  margin-bottom: 10px;
+}
+
+/* 사이드 */
+.aside__container {
+  width: 20%;
+  min-width: 100px;
+  height: 500px;
+  background-color: var(--color-white);
+  box-shadow: 2px 2px 4px var(--color-gray-4);
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+}
+
+.aside__item {
+  color: var(--color-gray-7);
+  font-weight: var(--weight-semi-bold);
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.active-item {
+  color: var(--color-blue);
+}
+
+/* 내용 */
+.right-content__container {
+  width: 80%;
+  background-color: var(--color-white);
+  box-shadow: 2px 2px 4px var(--color-gray-4);
+  border-radius: 10px;
+  margin-left: 10px;
+  padding: 30px;
+}
+
+.right_content-item__wrapper {
+  margin-bottom: 80px;
+}
+
+/* 프로필 */
+.profile-title {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-bold);
+  margin-bottom: 30px;
+}
+
+.profile-id,
+.profile-email,
+.profile-exp {
+  font-size: var(--font-regular);
+  margin: 10px;
+}
+
+.profile-id1,
+.profile-email1,
+.profile-exp1 {
+  font-weight: var(--weight-semi-bold);
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+/* 리뷰 css */
+.review-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.review-list li {
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.review-list li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.review-list li a:hover {
+  text-decoration: underline;
+}
+
+.review-problem-title {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+  color: var(--color-gray-7);
+  margin-bottom: 10px;
+}
+.problem-tag__container{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+
+.tag-item {
+  background-color: var(--color-white);
+  font-size: var(--font-micro);
+  color: var(--color-gray-6);
+  font-weight: var(--weight-regular);
+
+  border: none;
+  margin-right: 3px;
+  padding: 5px 8px;
+  margin: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px var(--color-gray-4);
+}
+
+
+.review-ele-footer {
+  text-align: right;
+  font-size: var(--font-micro);
+  color: var(--color-gray-5);
+}
+
+
+/* 경험치 */
+.profile-exp {
+  width: 300px;
+}
+
+.progress {
+  height: 20px;
+  margin: 10px 0;
+}
+
+
+/* 검색바 */
+.review-top__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: row;
+}
+
+.review__search {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 30px;
+  margin: 0 24px;
+  color: var(--color-gray-2);
+  border: 1px solid var(--color-gray-2);
+  border-radius: var(--border-radius-soft);
+}
+
+.review__search-input {
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  color: var(--color-gray-6);
+}
+
+.review__search-button {
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  color: var(--color-gray-2);
+}
+
+/* 공통 CSS */
+.create-btn {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.create-btn:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.button-small {
+  background-color: var(--color-gray-1);
+  color: var(--color-gray-7);
+  font-size: var(--font-micro);
+  box-shadow: 2px 2px 4px var(--color-gray-2);
+}
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background-color: inherit;
+}
+
+.progress-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  justify-content: center; /* 수평 정렬 */
+}
+
+.progress {
+  flex-grow: 1;
+  margin: 0 10px;
+  position: relative;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

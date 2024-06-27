@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- 기본 회원가입 템플릿 -->
+
+{% load socialaccount %}
+{% load static %}
+
+{% block style %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'CSS/accounts/signup.css' %}"
+  />
+{% endblock style %}
+
+
+{% block content %}
+    <div class="main__signup-container">
+      <div class="main__logobox">
+        <p style="color: white;">제대로 STUDY</p>
+      </div>
+      <form action="{% url 'accounts:signup' %}" method="POST" class="main__signupbox">
+        {% csrf_token %}
+        <div>
+          {{ form.as_p }}
+          <input type="submit" value="altudy 회원가입" class="main__signupbutton">
+        </div>
+      </form>
+    </div>
+{% endblock content %}

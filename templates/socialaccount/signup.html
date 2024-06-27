@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<!-- 소셜 인증 후 추가정보 받는 템플릿 -->
+
+{% load socialaccount %}
+{% load static %}
+
+{% block style %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'CSS\accounts\social\social_signup.css' %}"
+  />
+{% endblock style %}
+
+{% block content %}
+
+<div class="main__container">
+  <div class="main__logobox">
+    제대로 STUDY
+  </div>
+  <form action="{% url 'socialaccount_signup' %}" method="POST" class="main__social-signupbox">
+    {% csrf_token %}
+    <div>
+      <p>
+        <label for="id_username">이름</label>
+        {{ form.username }}
+      </p>
+      <p>
+        <label for="">이메일</label>
+        {{ form.email }}
+      </p>
+      <input type="submit" value="회원가입" class="main__signupbutton">
+    </div>
+  </form>
+</div>
+{% endblock content %}

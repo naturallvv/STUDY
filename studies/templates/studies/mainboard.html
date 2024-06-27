@@ -1,0 +1,146 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js
+"></script>
+{% endblock head %}
+
+{% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'CSS/studies/mainboard.css' %}"
+/>
+{% endblock style %} 
+
+{% block content %}
+<a href="{% url 'studies:detail' study.pk %}">
+  <div class="main__title">
+    {{ study.title}}
+  </div>
+</a>
+<div class="main__wrapper">
+  <aside class="aside__container">
+    <div class="aside__item" data-content="mainboard">대시보드</div>
+    <div class="aside__item" data-content="problem">학습관리</div>
+    <div class="aside__item-a">
+      <a  href="{% url 'chat:room' study.pk %}">라이브 스터디룸</a>
+    </div>
+    {% if request.user == study.user %}
+    <div class="aside__item" data-content="member">스터디 관리</div>
+    {% endif %}
+    
+    <section class="memberInfo__container">
+      <div class="memberInfo-title">
+        Study Crew
+      </div>
+      <hr>
+      {% for user in users %}
+      {% if user == study.user and user == request.user %}
+          <div class="memberInfo-username leader"> {{user.emoji_username}} - 리더</div>
+      {% elif user == study.user and user != request.user  %}
+          <div class="memberInfo-username"> {{user.emoji_username}} - 리더</div>
+      {% elif user != study.user and user == request.user  %}
+          <div class="memberInfo-username leader"> {{user.emoji_username}}</div>
+      {% else %}
+          <div class="memberInfo-username"> {{user.emoji_username}}</div>
+      {% endif %}
+      {% endfor %}
+    </section>
+    {% if request.user != study.user %}
+      <form action="{% url 'studies:withdraw' study.pk %}" method="post">
+        {% csrf_token %}
+        <button type"submit" class="study-expel">스터디 탈퇴</button>
+      </form>
+    {% endif %}
+  </aside>
+
+  <section class="right-content__container">
+    {% block right_content %}
+    {% endblock right_content %}
+    {#공지사항#}
+    <section class="right_content-item__wrapper">
+      
+      {% if request.user == study.user %}
+        <div class="right-align">
+          <a href="{% url 'studies:announcement_create' study.pk%}">
+            <button class="create-btn button-small">새 공지하기</button>
+          </a>
+        </div>
+      {% endif %}
+      <a href="{% url 'studies:announcement' study.pk %}">
+        <div class="right_content-title">📌 공지사항 ></div>
+      </a>
+    {% if announcements %}
+      {% for announcement in announcements  %}
+        <a href="{% url 'studies:announcement_detail' study.pk announcement.pk %}">
+          <div class="announcement__container">
+            <div class="announcement-title">{{announcement.title}}</div>
+            <div class="announcement-content">{{announcement.content}}</div>
+            <div class="announcement-date">{{announcement.updated_at}}</div>
+          </div>
+        </a>
+        <hr>
+        {% endfor %}
+        {% else %}
+          <div class="null-message">🐲 크루들과 공지사항을 공유해보세요!</div>
+    {% endif %}
+    </section>
+    {#통계#}
+    <section class="right_content-item__wrapper">
+      <div class="right_content-title">🏆 우리 함께 성장하는 리더보드</div>
+      <div class="ranking__wrapper">
+        {# 리뷰 작성률 #}
+        <section class="ranking-item__container">
+          <canvas id="reviewsRate-chart"></canvas>
+          {{ user_percentages | json_script:'user_percentages' }}
+          <div class="ranking-item-title">출석</div>
+        </section>
+        {# 리뷰 좋아요 #}
+        <section class="ranking-item__container">
+          <canvas id="reviewsLikesRate-chart"></canvas>
+          {{ user_review_likes_percentage | json_script:'user_review_likes_percentage' }}
+          <div class="ranking-item-title">과제</div>
+        </section>
+      
+      </div>
+      </section>
+    {#제출해야할 과제#}
+    <section class="right_content-item__wrapper">
+      <div class="right-align">
+        <a href="{% url 'reviews:create' %}?study={{ study.pk }}">
+          <button class="create-btn button-small">게시판 등록</button>
+        </a>
+      </div>
+      <div class="right_content-title">⌛ 그룹 게시판</div>
+      {% if problems %}
+        {% for problem in problems %}
+        <div class="problem__container">
+          <a href="{% url 'reviews:detail' problem.pk %}">
+            <div class="problem-title">{{ problem }}</div>
+            <div class="problem-reviewsCount">
+              {% if problem.review_set.count %}
+              총 <span>{{ problem.review_set.count }}</span>개의 답변이 있습니다.
+              {% else %}
+              🐲 가장 먼저 문제를 등록해보세요!
+              {% endif %}
+            </div>
+            <div class="problem-date">{{ problem.updated_at }}</div>
+          </a>
+        </div>
+        <hr>
+        {% endfor %}
+      {% else %}
+      <div class="null-message">🐲 그룹원들과 소통해 보세요!/div>
+      {% endif %}
+    </section>
+  </section>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="module" src="{% static 'JS/aside.js' %}"></script>
+<script src="{% static 'JS/ranking.js' %}"></script>
+{% endblock content %}
